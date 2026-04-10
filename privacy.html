@@ -4,30 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Fretio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .privacy-content {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 50px 20px;
+            margin: 0 auto 72px;
+            padding: 56px 28px;
             line-height: 1.8;
+            background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, transparent), color-mix(in srgb, var(--surface-muted) 92%, transparent));
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            box-shadow: var(--shadow-medium);
         }
         
         .privacy-content h1 {
-            color: var(--accent-blue);
+            color: var(--accent);
             margin-bottom: 2rem;
             text-align: center;
+            font-family: var(--font-display);
+            font-size: clamp(2.7rem, 5vw, 4.1rem);
+            letter-spacing: -0.06em;
         }
         
         .privacy-content h2 {
-            color: var(--text-primary);
+            color: var(--ink);
             margin: 2rem 0 1rem 0;
             font-size: 1.5rem;
+            font-family: var(--font-display);
+            letter-spacing: -0.04em;
         }
         
         .privacy-content p {
             margin-bottom: 1rem;
-            color: var(--text-secondary);
+            color: var(--ink-soft);
         }
         
         .privacy-content ul {
@@ -37,26 +49,27 @@
         
         .privacy-content li {
             margin-bottom: 0.5rem;
-            color: var(--text-secondary);
+            color: var(--ink-soft);
         }
         
         .last-updated {
-            background: var(--background-secondary);
-            padding: 1rem;
-            border-radius: 10px;
+            background: color-mix(in srgb, var(--surface) 80%, var(--canvas) 20%);
+            padding: 1rem 1.1rem;
+            border-radius: 16px;
             margin-bottom: 2rem;
             text-align: center;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
+            color: var(--ink-soft);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
         }
     </style>
 </head>
-<body>
+<body class="legal-page">
     <header>
         <nav>
             <div class="nav-container">
                 <div class="logo">
-                    <h1><a href="index.html" style="color: var(--accent-blue); text-decoration: none;">Fretio</a></h1>
+                    <h1><a href="index.html" style="color: var(--accent); text-decoration: none;">Fretio</a></h1>
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
@@ -70,7 +83,7 @@
     </header>
 
     <main>
-        <div class="privacy-content">
+        <div class="privacy-content reveal is-visible">
             <h1>Privacy Policy</h1>
             
             <div class="last-updated">
@@ -191,5 +204,6 @@
             </div>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

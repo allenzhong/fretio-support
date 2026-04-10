@@ -6,6 +6,8 @@
 
 :root {
     color-scheme: light;
+    --font-display: "Fraunces", "Iowan Old Style", serif;
+    --font-body: "Manrope", "Avenir Next", sans-serif;
     --canvas: #f5f2eb;
     --surface: #fffdf9;
     --surface-muted: #efece5;
@@ -62,7 +64,8 @@ html {
 }
 
 body {
-    font-family: "SF Pro Display", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+    font-family: var(--font-body);
     line-height: 1.6;
     color: var(--ink);
     background:
@@ -70,6 +73,20 @@ body {
         radial-gradient(circle at 85% 12%, var(--accent-soft), transparent 28%),
         linear-gradient(180deg, color-mix(in srgb, var(--canvas) 94%, white 6%), var(--canvas));
     background-color: var(--canvas);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.14) 0.7px, transparent 0.8px),
+        radial-gradient(circle at 80% 30%, rgba(0, 0, 0, 0.1) 0.6px, transparent 0.7px),
+        radial-gradient(circle at 40% 80%, rgba(0, 0, 0, 0.12) 0.7px, transparent 0.8px);
+    background-size: 18px 18px, 24px 24px, 20px 20px;
+    mix-blend-mode: multiply;
 }
 
 img {
@@ -106,8 +123,9 @@ header {
 }
 
 .logo h1 {
+    font-family: var(--font-display);
     font-size: 1.9rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.045em;
 }
 
@@ -219,6 +237,7 @@ header {
 .features h2,
 .screenshots h2,
 .support h2 {
+    font-family: var(--font-display);
     font-size: clamp(2.5rem, 5vw, 4.6rem);
     line-height: 0.96;
     letter-spacing: -0.06em;
@@ -329,6 +348,12 @@ header {
     background: color-mix(in srgb, var(--surface) 88%, transparent);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
 }
 
 .metric-card strong {
@@ -485,6 +510,7 @@ header {
 }
 
 .feature-text h3 {
+    font-family: var(--font-display);
     font-size: clamp(1.7rem, 2vw, 2.15rem);
     line-height: 1.05;
     letter-spacing: -0.04em;
@@ -600,6 +626,9 @@ header {
     text-align: center;
     color: var(--ink-soft);
     font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    letter-spacing: -0.03em;
 }
 
 .support-content {
@@ -618,6 +647,7 @@ header {
 }
 
 .support-section h3 {
+    font-family: var(--font-display);
     font-size: 1.4rem;
     letter-spacing: -0.03em;
     margin-bottom: 1.15rem;
@@ -646,6 +676,8 @@ header {
 .faq-item h4 {
     margin-bottom: 0.45rem;
     font-size: 1.08rem;
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
 }
 
 .release-panel,
@@ -697,8 +729,24 @@ footer {
 }
 
 .footer-section h4 {
+    font-family: var(--font-display);
     margin-bottom: 0.8rem;
     font-size: 1.05rem;
+}
+
+.legal-page main {
+    padding: 72px 24px 0;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .footer-section p,
@@ -835,6 +883,10 @@ footer {
 }
 
 @media (max-width: 640px) {
+    .legal-page main {
+        padding: 48px 16px 0;
+    }
+
     .nav-container {
         padding-top: 16px;
         padding-bottom: 16px;
@@ -920,5 +972,11 @@ footer {
     *::after {
         animation: none !important;
         transition: none !important;
+    }
+
+    .reveal,
+    .reveal.is-visible {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
